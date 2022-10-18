@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
+use App\Http\Resources\MediaResource;
 use App\Services\Media\InterfaceMediaService;
 
 class MediaController extends Controller
@@ -23,7 +24,9 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        $resource = MediaResource::collection($this->service->get());
+
+        return $this->success_message($resource);
     }
 
     /**

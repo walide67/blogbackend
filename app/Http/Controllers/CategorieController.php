@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Http\Requests\StoreCategorieRequest;
 use App\Http\Requests\UpdateCategorieRequest;
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\CategorieResource;
 use App\Services\Categorie\InterfaceCategorieService;
+use App\Traits\ResponseTrait;
 
 class CategorieController extends Controller
 {
@@ -22,17 +25,21 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $resource = CategorieResource::collection($this->service->get());
+        
+        return $this->success_message($resource);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get_articles($id){
+        $data = $this->service->get_articles($id);
+
+        return $this->success_message(ArticleResource::collection($data));
+    }
+
+    public function get_articles_by_slug($slug){
+        $data = $this->service->get_articles_by_slug($slug);
+
+        return $this->success_message(new CategorieResource($data));
     }
 
     /**
@@ -52,9 +59,15 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show($id)
     {
-        //
+        $category = $this->service->find($id);
+
+        if(!$category){
+            return $this->error_message('Post not found', [], 404);
+        }
+
+        return $this->success_message(new CategorieResource($category));
     }
 
     /**

@@ -9,5 +9,10 @@ class Tag extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'slug','status'];
+
+
+    public function articles(){
+        return $this->belongsToMany(Article::class, "articles_tags", "tag_id", "article_id");
+    } 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Http\Resources\ArticleResource;
 use App\Services\Article\InterfaceArticleService;
 
 class ArticleController extends Controller
@@ -24,7 +25,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $data = $this->service->get();
+        $resource = ArticleResource::collection($this->service->get());
+
+        return $this->success_message($resource);
     }
 
     /**
@@ -54,20 +57,45 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        //
+        $article = $this->service->find($id);
+
+        if(!$article){
+            return $this->error_message('Post not found', [], 404);
+        }
+
+        return $this->success_message(new ArticleResource($article));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Article $article)
-    {
-        //
+    public function search($keyword){
+        $data = $this->service->search($keyword);
+
+
+        return $this->success_message(ArticleResource::collection($data));
+    }
+
+    public function get_by_slug($slug){
+        $article = $this->service->get_by_slug($slug);
+
+        if(!$article){
+            return $this->error_message('Post not found', [], 404);
+        }
+
+        return $this->success_message(new ArticleResource($article));
+    }
+
+    public function get_recent_articles(){
+        $articles = $this->service->get_recent_articles();
+
+        return $this->success_message(ArticleResource::collection($articles));
+    }
+
+    public function get_by_languages($lang){
+        
+        $articles = $this->service->get_by_language($lang);
+
+        return $this->success_message(ArticleResource::collection($articles));
     }
 
     /**

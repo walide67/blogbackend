@@ -16,8 +16,14 @@ class MediaFactory extends Factory
      */
     public function definition()
     {
+        $image_url = $this->faker->imageUrl(640, 480, 'technics', true);
         return [
-            //
+            'title' => $this->faker->text(50),
+            'url' => $image_url,
+            'description' => $this->faker->text('200'),
+            'thumb_url' => null,
+            'type' => "jpeg",
+            'status' => $this->faker->boolean(),
         ];
     }
 }

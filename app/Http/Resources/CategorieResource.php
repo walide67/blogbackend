@@ -14,6 +14,14 @@ class CategorieResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'description' => $this->description,
+            'parent' => $this->parent ?: 0,
+            'language'=> $this->language,
+            'articles' => ArticleResource::collection($this->whenLoaded('articles')),
+            'status' => $this->status === 1 ? true : false
+        ];
     }
 }

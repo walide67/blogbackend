@@ -9,11 +9,6 @@ class BaseRepository implements EloquentRepositoryInterface{
 
     protected $model;
 
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
-
     public function get($columns = ['*'], $relationships = []){
         return $this->model->with($relationships)->get($columns);
     }

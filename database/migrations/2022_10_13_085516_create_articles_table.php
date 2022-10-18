@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('content');
             $table->string('main_media')->nullable();
+            $table->string('language', 2);
             $table->unsignedBigInteger('categorie_id');
             $table->string('extrait')->nullable();
             $table->double('rating')->default(0);
             $table->integer('nbr_votes')->default(0);
+            $table->boolean('status')->default(false);
             $table->softDeletes();
             $table->timestamps();
 

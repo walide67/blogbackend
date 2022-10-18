@@ -10,5 +10,10 @@ class Article extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'content', 'main_media', 'categorie_id', 'extrait', 'rating', 'nbr_votes', 'status','deleted_at', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'content', 'slug', 'language','main_media', 'categorie_id', 'extrait', 'rating', 'nbr_votes', 'status','deleted_at', 'created_at', 'updated_at'];
+
+    public function media(){
+        return $this->belongsTo(Media::class, 'main_media');
+    }
 }
+

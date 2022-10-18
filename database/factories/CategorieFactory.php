@@ -17,7 +17,12 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            //
-        ];
+            'name' => $this->faker->text(10),
+            'slug' => $this->faker->slug(2),
+            'description' => $this->faker->text(200),
+            'parent'=> null,
+            'language' => $this->faker->randomElement(['fr', 'ar', 'en']),
+            'status' => true
+    ];
     }
 }

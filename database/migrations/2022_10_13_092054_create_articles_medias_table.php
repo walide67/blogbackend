@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('articles_medias', function (Blueprint $table) {
-            //
+        Schema::create('articles_medias', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('article_id');
+            $table->unsignedBigInteger('media_id');
+
+            $table->foreign('article_id')->references('id')->on('articles')->cascadeOnDelete();
+            $table->foreign('media_id')->references('id')->on('medias')->cascadeOnDelete();
         });
     }
 
@@ -25,13 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('articles_medias', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('article_id');
-            $table->unsignedBigInteger('media_id');
-
-            $table->foreign('article_id')->references('id')->on('articles')->cascadeOnDelete();
-            $table->foreign('media_id')->references('id')->on('medias')->cascadeOnDelete();
-        });
+        Schema::dropIfExists('articles_medias');
     }
 };

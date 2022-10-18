@@ -3,6 +3,7 @@
 namespace App\Services\Media;
 
 use App\Repositories\InterfaceMediaRepository;
+use App\Services\BaseService;
 
 class MediaService extends BaseService implements InterfaceMediaService{
 
