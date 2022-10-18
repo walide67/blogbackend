@@ -1,0 +1,20 @@
+h3.title{
+  position: relative;
+  margin-bottom: 50px;
+  width: fit-content;
+}
+
+h3.title::after{
+  content: '';
+  width: calc(100% + 20px);
+  height: 3px;
+  background-color: var(--green-color);
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+.message{
+  font-size: 22px;
+  text-align: center;
+}

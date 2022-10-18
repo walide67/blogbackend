@@ -1,0 +1,9 @@
+.post:hover{
+  top: -5px;
+}
+
+.message{
+  margin: auto;
+  color: white;
+  font-size: 30px;
+}

@@ -1,0 +1,12 @@
+.message{
+  margin: auto;
+  margin-top: 30px;
+  color: white;
+  font-size: 30px;
+}
+
+a{
+  margin-top: 20px;
+  color: var(--green-color)!important;
+}
+

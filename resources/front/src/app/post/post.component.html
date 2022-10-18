@@ -1,0 +1,20 @@
+<ngx-shimmer-loading [height] ="'400px'" [width] ="'100%'"  *ngIf="loading"></ngx-shimmer-loading>
+<article class="post" *ngIf="!loading">
+  <div class="d-flex justify-content-between post-header">
+    <h5><fa-icon [icon]="faCalendarDays"></fa-icon> {{ post.created_at }}</h5>
+    <h5><fa-icon [icon]="faHeart"></fa-icon> {{ post.rating }} / 5</h5>
+  </div>
+  <div class="image-post">
+    <img src="{{post.main_media}}" alt="" srcset="" />
+  </div>
+  <div class="post-info">
+    <h3>{{ post.title }}</h3>
+    <div class="devider"></div>
+  </div>
+  <div class="content">
+    <p>
+      {{ post.content }}
+    </p>
+    <pre><code [highlight]="code"></code></pre>
+  </div>
+</article>

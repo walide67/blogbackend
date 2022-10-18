@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url(./assets/fonts/roboto/Roboto-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway"), url(./assets/fonts/Raleway/static/Raleway-Regular.ttf) format("truetype");
+}
+
+*:not("container")
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --dark-color: #333333;
+  --green-color: #48E5C2;
+  --white-color: #FCF7F8;
+  --gray-color: #7E7F9A;
+}
+
+
+a, .nav-link{
+  color: var(--white-color)!important;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+body{
+  background-color: var(--dark-color);
+  color: var(--white-color);
+  font-family: "Raleway", Arial, Helvetica, sans-serif;;
+}
+
+
+
+.nav-link{
+  font-size: 22px;
+  position: relative;
+  padding: 0!important;
+  margin: 10px;
+}
+
+.nav-link::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--green-color);
+  transition: 500ms;
+}
+
+.nav-link:hover::after{
+  width: 100%;
+}
+
+.content-section{
+  margin-top: 150px;
+}
+
+.outline-success-btn{
+  border-color: var(--green-color);
+  color: var(--green-color);
+}
+
+.outline-success-btn:hover{
+  background-color: var(--green-color);
+  color: var(--dark-color);
+}
+
+.form-control{
+  background-color: var(--gray-color);
+  color: white;
+}
+
+.form-control:focus{
+  background-color: var(--gray-color);
+  color: var(--white-color);
+}
+
+.form-control::placeholder{
+  color: var(--dark-color);
+}
+
+aside .menu{
+  margin-top: 30px;
+}
+
+aside .menu h4{
+  font-size: 20px;
+  font-size: 600;
+  padding-bottom: 15px;
+  color: var(--white-color);
+  position: relative;
+}
+
+aside .menu h4::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--green-color);
+}
+
+aside .menu ul{
+  list-style: none;
+  overflow: hidden;
+  max-height: 150px;
+}
+
+aside .menu ul li{
+  margin-top: 10px;
+  transition: 500ms;
+
+}
+
+aside .menu ul li a{
+  transition: 500ms;
+}
+
+aside .menu a.see-more-link,
+aside .menu a.see-less-link {
+  color: var(--green-color)!important;
+}
+
+aside .menu a.see-less-link{
+  display: none;
+}
+
+aside .menu ul li:hover{
+  margin-left: 5px;
+}
+
+
+/* ################################# post ########################### */
+
+.post{
+  background-color: #343e4b;
+  /* background-color: var(--gray-color); */
+  border-radius: 10px;
+  transition: 500ms;
+  position: relative;
+  top: 0px;
+}
+
+.post:not(last-child){
+  margin-bottom: 20px;
+}
+
+.post .image-post{
+  width: 100%;
+  height: 350px;
+}
+
+.post .image-post img{
+  width: 100%;
+  height: 100%;
+}
+
+.post .post-info{
+  padding: 20px;
+}
+
+.post .post-info .devider{
+  background-color: var(--gray-color);
+  display: black;
+  width: 100%;
+  height: 2px;
+  margin: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post .post-info .footer-info,.post .post-header{
+  color: var(--green-color);
+}
+
+.post h3{
+  font-size: 24px;
+  color: var( --white-color);
+}
+
+.page-item.active .page-link{
+  background-color: var(--green-color);
+  color: var(--dark-color)!important;
+}
+
+.page-item .page-link{
+  background-color: transparent;
+  border: 0px;
+}
+
+.shimmer-loading .ngx-shimmer{
+  background-color: #343e4b;
+  background-image: linear-gradient(to right,#343e4b 0,#505a65 20%,#343e4b 40%,#343e4b 100%);
+}
+

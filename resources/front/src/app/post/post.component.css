@@ -1,0 +1,9 @@
+.post .post-header{
+  padding: 15px;
+}
+
+article.post .content{
+  font-size: 18px;
+  padding: 20px;
+  line-height: 35px;
+}

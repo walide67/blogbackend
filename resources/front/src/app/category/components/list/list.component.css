@@ -1,0 +1,33 @@
+ul.category-list{
+  list-style: none;
+}
+
+ul.category-list li{
+  margin-bottom: 15px;
+  transition: 500ms;
+  width: fit-content;
+}
+
+ul.category-list li:hover{
+  padding-left: 10px;
+}
+
+ul.category-list li a{
+  font-size: 20px;
+}
+
+h3.title{
+  position: relative;
+  margin-bottom: 50px;
+  width: fit-content;
+}
+
+h3.title::after{
+  content: '';
+  width: calc(100% + 20px);
+  height: 3px;
+  background-color: var(--green-color);
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}

@@ -1,0 +1,35 @@
+<ngx-shimmer-loading [height] ="'400px'" [width] ="'100%'"  *ngIf="loading"></ngx-shimmer-loading>
+<div *ngIf="!loading">
+<h3 class="title">Category : "{{  name }}"</h3>
+<p class="message" *ngIf="posts.length == 0 && !loading" >0 result found.</p>
+<div class="d-flex flex-column">
+  <a *ngFor="let post of posts; index as i;" routerLink="/posts/{{ post.slug }}" class="post">
+    <div class="image-post">
+      <img src="{{ post.main_media }}" alt="" srcset="">
+    </div>
+    <div class="post-info">
+      <h3>{{ post.title }} </h3>
+      <div class="devider"></div>
+      <div class="d-flex justify-content-between footer-info">
+        <h5><fa-icon [icon]="faCalendarDays"></fa-icon> 17 Juin 2022</h5>
+        <h5><fa-icon [icon]="faEye"></fa-icon> 12 views</h5>
+      </div>
+    </div>
+  </a>
+  <nav *ngIf="posts.length > 0 && !loading" class="d-flex justify-content-center my-5">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</div>

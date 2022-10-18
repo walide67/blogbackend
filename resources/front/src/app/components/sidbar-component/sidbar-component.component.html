@@ -1,0 +1,52 @@
+
+  <form class="d-flex">
+    <input class="form-control me-2" name="keywordSearch" type="text"  [(ngModel)]="keywordSearch" required placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success outline-success-btn" (click)="search()" >Search</button>
+  </form>
+  <div class="menu">
+    <h4>Categories</h4>
+    <ul>
+      <li *ngIf="categoryLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="categoryLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="categoryLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngFor="let categorie of categories; index as i;"><a routerLink="/categories/{{ categorie.slug }}/posts">{{ categorie.name }}</a></li>
+    </ul>
+      <a *ngIf="!categoryLoading" href="#" class="see-more-link" (click) = "menuSeeMore($event)">See more... <fa-icon [icon]="faArrowDown"></fa-icon></a>
+      <a *ngIf="!categoryLoading" href="#" class="see-less-link" (click) = "menuSeeLess($event)">See less... <fa-icon [icon]="faArrowUp"></fa-icon></a>
+  </div>
+
+  <div class="menu">
+    <h4>Tags</h4>
+    <ul>
+      <li *ngIf="tagLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="tagLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="tagLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+
+      <li *ngFor="let tag of tags; index as i;"><a routerLink="/tags/{{ tag.slug }}/posts">{{ tag.name }}</a></li>
+    </ul>
+      <a *ngIf="!tagLoading" href="#" class="see-more-link" (click) = "menuSeeMore($event)">See more... <fa-icon [icon]="faArrowDown"></fa-icon></a>
+      <a *ngIf="!tagLoading" href="#" class="see-less-link" (click) = "menuSeeLess($event)">See less... <fa-icon [icon]="faArrowUp"></fa-icon></a>
+  </div>
+
+  <div class="menu">
+    <h4>Popular posts</h4>
+    <ul>
+      <li *ngIf="postLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="postLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="postLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+
+      <li *ngFor="let post of posts; index as i;"><a routerLink="/posts/{{ post.slug }}">{{ post.title }}</a></li>
+    </ul>
+    <a *ngIf="!postLoading" href="#" class="see-more-link" (click) = "menuSeeMore($event)">See more... <fa-icon [icon]="faArrowDown"></fa-icon></a>
+    <a *ngIf="!postLoading" href="#" class="see-less-link" (click) = "menuSeeLess($event)">See less... <fa-icon [icon]="faArrowUp"></fa-icon></a>
+  </div>
+
+  <div class="menu">
+    <h4>Languages</h4>
+    <ul>
+      <li *ngFor="let language of languages; index as i;"><a routerLink="/articles/languages/{{ language.code }}">{{ language.name }}</a></li>
+      <li *ngIf="languagesLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="languagesLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+      <li *ngIf="languagesLoading"><ngx-shimmer-loading [height] ="'40px'" [width] ="'100%'"></ngx-shimmer-loading>      </li>
+    </ul>
+  </div>
